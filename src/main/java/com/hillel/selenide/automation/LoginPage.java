@@ -16,7 +16,7 @@ public class LoginPage extends HomePage{
         return this;
     }
 
-   public LoginPage login(String email, String password) {
+   public HomePage login(String email, String password) {
         System.out.println("Login as user");
         inputEmail(email);
         inputPassword(password);
@@ -39,10 +39,10 @@ public class LoginPage extends HomePage{
 //        return driver.findElement(By.cssSelector(".auth-page h1")).getText();
 //    }
 //
-   public LoginPage clickSingInButton() {
-       System.out.println("Click Sing In button");
-       $("button[type='submit']").click();
-       return new LoginPage();
+   public HomePage clickSingInButton() {
+        System.out.println("Click Sing In button");
+        $("button[type='submit']").click();
+        return new HomePage();
     }
 
 }

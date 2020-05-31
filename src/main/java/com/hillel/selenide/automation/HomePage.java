@@ -16,10 +16,10 @@ public class HomePage {
         return this;
     }
 
-//    public NewPostPage clickNewPost() {
-//        $("[href='#editor']")).click();
-//        return new NewPostPage();
-//    }
+    public HomePage clickNewPost() {
+       $("[href='#editor']").click();
+        return new HomePage();
+    }
 
 
 

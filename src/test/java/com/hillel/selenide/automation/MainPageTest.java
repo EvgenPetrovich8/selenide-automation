@@ -25,5 +25,13 @@ public class MainPageTest {
         $(byCssSelector("a[href='#register']")).shouldBe(Condition.visible);
     }
 
+    @Test
+    public void logInPageOpen() {
+        open("https://react-redux.realworld.io/");
 
+        SelenideElement selenideElement = $(byCssSelector("a[href='#login']"));
+        selenideElement.click();
+        $(byText("Sign in")).shouldBe(Condition.visible);
+
+    }
 }

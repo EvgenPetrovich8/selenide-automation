@@ -4,6 +4,8 @@ package com.hillel.selenide.automation;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.SelenideElement;
+import com.hillel.selenide.automation.config.UserConfiguration;
+import org.aeonbits.owner.ConfigFactory;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -19,6 +21,7 @@ import static com.codeborne.selenide.Selectors.byCssSelector;
 public class LogInPageTest extends TestBase{
 
     private LoginPage loginPage = new LoginPage();
+    private UserConfiguration userConfiguration = ConfigFactory.create(UserConfiguration.class);
 
     @BeforeMethod
     public void setUp(){
@@ -35,28 +38,6 @@ public class LogInPageTest extends TestBase{
 
     }
 
-//        @Test
-//        public void emailFieldCheck() {
-//            open("https://react-redux.realworld.io/");
-//
-//            SelenideElement selenideElement = $(byCssSelector("a[href='#login']"));
-//            selenideElement.click();
-//
-//            $(byCssSelector("input[type='email']\"")).shouldBe(Condition.visible);
-//
-//        }
-//
-//    @Test
-//    public void passwordFieldCheck() {
-//        open("https://react-redux.realworld.io/");
-//
-//        SelenideElement selenideElement = $(byCssSelector("a[href='#login']"));
-//        selenideElement.click();
-//
-//        $(byCssSelector("input[type='password']\"")).shouldBe(Condition.visible);
-//
-//    }
-
     @Test
     public void clickSingInButtonEmailAnaPasswordEmpty() {
         open("https://react-redux.realworld.io/");
@@ -72,13 +53,12 @@ public class LogInPageTest extends TestBase{
     }
     @Test
     public void incorrectEmail() {
-        String userName="evgenpetrovich2123";
         String email ="1@1";
-        String password ="test123321123";
+        String userPassword= userConfiguration.password();
 
         loginPage
                 .openPage()
-                .login(email,password);
+                .login(email,userPassword);
 
 
         $((".error-messages>li")).shouldHave(exactText("email or password is invalid"));
@@ -86,12 +66,12 @@ public class LogInPageTest extends TestBase{
 
     @Test
     public void incorrectPassword() {
-        String email ="evgenpetrovich2123@mail.com";
+        String userEmail= userConfiguration.email();
         String password ="111";
 
         loginPage
                 .openPage()
-                .login(email,password);
+                .login(userEmail,password);
 
 
         $((".error-messages>li")).shouldHave(exactText("email or password is invalid"));
@@ -99,13 +79,13 @@ public class LogInPageTest extends TestBase{
 
     @Test
     public void loginTest() {
-       String userName="evgenpetrovich2123";
-       String email ="evgenpetrovich2123@mail.com";
-       String password ="test123321123";
+        String userName= userConfiguration.name();
+        String userEmail= userConfiguration.email();
+        String userPassword= userConfiguration.password();
 
        loginPage
                .openPage()
-               .login(email,password)
+               .login(userEmail,userPassword)
                .userShouldBeLoggedIn(userName);
 
     }
