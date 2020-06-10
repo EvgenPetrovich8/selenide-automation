@@ -1,6 +1,7 @@
 package com.hillel.selenide.automation;
 
 import com.codeborne.selenide.Condition;
+import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.$;
@@ -10,7 +11,7 @@ import static com.codeborne.selenide.Selenide.$;
  */
 public class HomePage {
 
-
+    @Step("User with {email} should be logged in")
     public HomePage userShouldBeLoggedIn(String userName) {
         $("[href='#@" +userName+"']").shouldBe(Condition.visible);
         return this;

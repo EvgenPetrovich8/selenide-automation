@@ -1,6 +1,6 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name="Smoke test suite">
+<suite name="Smoke test suite" parallel="methods" thread-count="2">
 
     <!--<listeners>-->
         <!--<listener class-name="com.hillel.selenium.auto.listener.MethodListeners"/>-->
@@ -8,6 +8,7 @@
 
     <test name="Login tests">
         <classes>
+            <class name="com.hillel.selenide.automation.LogInPageTest"/>
             <class name="com.hillel.selenide.automation.NewPostPageTest"/>
         </classes>
     </test>

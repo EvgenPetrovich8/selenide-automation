@@ -35,34 +35,34 @@ public class NewPostPageTest extends TestBase{
         open(Configuration.baseUrl);
     }
 
-@Test
-    public void newPostPageOpen() {
-        open("https://react-redux.realworld.io/");
-
-
-        String userName= userConfiguration.name();
-        String userEmail= userConfiguration.email();
-        String userPassword= userConfiguration.password();
-
-        String articleTitle = "ArticleTitle";
-        String articleAbout ="article about test";
-        String article ="This is my article about the Selenide";
-
-        loginPage
-                .openPage()
-                .login(userEmail,userPassword)
-                .userShouldBeLoggedIn(userName);
-        homePage
-                .clickNewPost();
-
-              newPostPage
-               .fillAtricleFieldsAndSave(articleTitle,articleAbout,article);
-
-              assertThat(articleDetailsPage.articleShouldBeCreated()).isTrue();
-
-
-
-    }
+//@Test
+//    public void newPostPageOpen() {
+//        open("https://react-redux.realworld.io/");
+//
+//
+//        String userName= userConfiguration.name();
+//        String userEmail= userConfiguration.email();
+//        String userPassword= userConfiguration.password();
+//
+//        String articleTitle = "ArticleTitle";
+//        String articleAbout ="article about test";
+//        String article ="This is my article about the Selenide";
+//
+//        loginPage
+//                .openPage()
+//                .login(userEmail,userPassword)
+//                .userShouldBeLoggedIn(userName);
+//        homePage
+//                .clickNewPost();
+//
+//              newPostPage
+//               .fillAtricleFieldsAndSave(articleTitle,articleAbout,article);
+//
+//              assertThat(articleDetailsPage.articleShouldBeCreated()).isTrue();
+//
+//
+//
+//    }
 
     @Test
     public void articleIsCreated() {

@@ -5,6 +5,7 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.SelenideElement;
 import com.hillel.selenide.automation.config.UserConfiguration;
+import io.qameta.allure.*;
 import org.aeonbits.owner.ConfigFactory;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -18,6 +19,8 @@ import static com.codeborne.selenide.Selenide.open;
 import static com.codeborne.selenide.Selectors.byCssSelector;
 
 
+@Feature("Authorization feature")
+@Story("Login Story")
 public class LogInPageTest extends TestBase{
 
     private LoginPage loginPage = new LoginPage();
@@ -29,6 +32,7 @@ public class LogInPageTest extends TestBase{
     }
 
     @Test
+    @Severity(SeverityLevel.BLOCKER)
     public void logInPageOpen() {
         open("https://react-redux.realworld.io/");
 
